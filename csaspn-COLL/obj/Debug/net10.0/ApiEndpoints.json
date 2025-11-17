@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "csaspn_COLL.DeviceDetectorController",
+    "Method": "Get",
+    "RelativePath": "api/DeviceDetector",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

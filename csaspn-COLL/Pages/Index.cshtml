@@ -1,0 +1,10 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "localhost";
+    Layout = null;
+}
+
+<div>
+    <p>@Html.Raw(Model.DeviceInfo?.Replace("\n", "<br />"))</p>
+</div>
