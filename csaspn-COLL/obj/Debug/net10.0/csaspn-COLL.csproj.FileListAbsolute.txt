@@ -96,3 +96,6 @@ C:\Users\trued\source\repos\csaspn-COLL\csaspn-COLL\obj\Debug\net10.0\refint\csa
 C:\Users\trued\source\repos\csaspn-COLL\csaspn-COLL\obj\Debug\net10.0\csaspn-COLL.pdb
 C:\Users\trued\source\repos\csaspn-COLL\csaspn-COLL\obj\Debug\net10.0\csaspn-COLL.genruntimeconfig.cache
 C:\Users\trued\source\repos\csaspn-COLL\csaspn-COLL\obj\Debug\net10.0\ref\csaspn-COLL.dll
+C:\Users\trued\source\repos\csaspn-COLL\csaspn-COLL\obj\Debug\net10.0\csaspn-COLL.sourcelink.json
+C:\Users\trued\source\repos\csaspn-COLL\csaspn-COLL\bin\Debug\net10.0\Pages\TrashCan\trip_20251119_163245_484.json
+C:\Users\trued\source\repos\csaspn-COLL\csaspn-COLL\bin\Debug\net10.0\Pages\TrashCan\trip_20251119_163611_310.json

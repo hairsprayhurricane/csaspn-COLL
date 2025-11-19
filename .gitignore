@@ -1,0 +1,22 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build
+bin/
+obj/
+.vs/ProjectEvaluation/csaspn-coll.strings.v10.bin
+.vs/ProjectEvaluation/csaspn-coll.projects.v10.bin
+.vs/ProjectEvaluation/csaspn-coll.metadata.v10.bin
+.vs/csaspn-COLL.slnx/v18/DocumentLayout.json
+.vs/csaspn-COLL.slnx/v18/DocumentLayout.backup.json
+.vs/csaspn-COLL.slnx/v18/.suo
+.vs/csaspn-COLL.slnx/v18/.futdcache.v2
+.vs/csaspn-COLL.slnx/FileContentIndex/d885c049-592e-4037-a110-1bd3a0b4a472.vsidx
+.vs/csaspn-COLL.slnx/FileContentIndex/abaff30d-edcb-4b54-8497-786e8c9dfcb0.vsidx
+.vs/csaspn-COLL.slnx/FileContentIndex/7cec6609-af5f-418d-9643-2c62d0fcf781.vsidx
+.vs/csaspn-COLL.slnx/FileContentIndex/78042959-5504-43b3-bbb1-08b374ab7893.vsidx
+.vs/csaspn-COLL.slnx/FileContentIndex/1ed0d193-e65a-477c-8dee-88eb68e37aee.vsidx
+.vs/csaspn-COLL.slnx/DesignTimeBuild/.dtbcache.v2
+.vs/csaspn-COLL.slnx/config/applicationhost.config

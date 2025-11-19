@@ -7,7 +7,7 @@ namespace csaspn_COLL.Pages
 {
     public class IndexModel : PageModel
     {
-        public string DeviceInfo { get; set; } = "Загрузка...";
+        public string DeviceInfo { get; set; } = "";
 
         public void OnGet()
         {
@@ -15,7 +15,7 @@ namespace csaspn_COLL.Pages
             var result = DeviceDetectorController.ParseUserAgent(userAgent, getWrapper:true);
             Console.WriteLine(result); 
 
-            DeviceInfo = result;
+            //DeviceInfo = result;
         }
     }
 }

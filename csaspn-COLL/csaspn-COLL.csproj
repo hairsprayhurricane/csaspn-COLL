@@ -7,4 +7,8 @@
     <RootNamespace>csaspn_COLL</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\TrashCan\" />
+  </ItemGroup>
+
 </Project>

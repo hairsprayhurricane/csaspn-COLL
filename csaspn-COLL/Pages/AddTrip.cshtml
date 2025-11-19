@@ -1,0 +1,49 @@
+﻿@page "/addtrip"
+@model csaspn_COLL.Pages.AddTripModel
+@{
+    ViewData["Title"] = "Добавить путешествие";
+}
+
+<form method="post">
+    <div>
+        <label asp-for="Destination">Куда едем?</label>
+        <input asp-for="Destination" />
+    </div>
+
+    <div>
+        <label asp-for="TravelDate">Дата поездки</label>
+        <input asp-for="TravelDate" type="date" />
+    </div>
+
+    <div>
+        <label asp-for="Travelers">Количество путешественников</label>
+        <input asp-for="Travelers" type="number" />
+    </div>
+
+    <div>
+        <input asp-for="IsBooked" type="checkbox" />
+        <label asp-for="IsBooked">Билеты/отель забронированы?</label>
+    </div>
+    
+    <div id="attractions-container">
+        <label>Достопримечательности для посещения</label>
+        <div>
+            <input name="Attractions" />
+        </div>
+    </div>
+
+    <button type="button" onclick="addAttraction()">Добавить достопримечательность</button>
+
+    <button type="submit" onclick="alert('Данные сохранены в мусорку');">Сохранить данные о путешествии</button>
+</form>
+
+<script>
+    function addAttraction() {
+        const container = document.getElementById('attractions-container');
+        const div = document.createElement('div');
+        const input = document.createElement('input');
+        input.name = 'Attractions';
+        div.appendChild(input);
+        container.appendChild(div);
+    }
+</script>
