@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("csaspn-COLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63a77813246321f181badd3293e9cfa6965f925d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3759ec95522fa9f4ae0fb5576dab4f1ab613ff2")]
 [assembly: System.Reflection.AssemblyProductAttribute("csaspn-COLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("csaspn-COLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

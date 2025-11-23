@@ -61,6 +61,7 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\13d67f76-419b-4671-a143-29a61377d11e.png
 C:\Users\trued\source\repos\csaspn-COLL\csaspn-COLL\wwwroot\css\site.css
 C:\Users\trued\source\repos\csaspn-COLL\csaspn-COLL\wwwroot\favicon.ico
 C:\Users\trued\source\repos\csaspn-COLL\csaspn-COLL\wwwroot\js\site.js
