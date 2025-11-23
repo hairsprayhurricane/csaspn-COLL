@@ -5,10 +5,120 @@
     Layout = null;
 }
 
-<div>
-    <p>@Html.Raw(Model.DeviceInfo?.Replace("\n", "<br />"))</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        .file-upload {
+            margin: 20px 0;
+        }
+        .file-info {
+            margin: 10px 0;
+            color: #666;
+        }
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>@Html.Raw(Model.DeviceInfo?.Replace("\n", "<br />"))</p>
+    </div>
 
-<div>
-    <button type="button" onclick="location.href='/addtrip'">Добавить путешествие</button>
-</div>
+    <div>
+        <button type="button" onclick="location.href='/addtrip'">Добавить путешествие</button>
+    </div>
+
+    <div class="file-upload">
+        <h3>Загрузить изображение</h3>
+        <form id="uploadForm" method="post" enctype="multipart/form-data">
+            <input type="file" id="fileInput" name="file" accept=".jpg,.jpeg,.png,.gif" style="display: none;">
+            <button type="button" onclick="document.getElementById('fileInput').click()">Выбрать файл</button>
+            <div id="fileInfo" class="file-info">Файл не выбран</div>
+            <div id="errorMessage" class="error-message"></div>
+        </form>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const fileInfo = document.getElementById('fileInfo');
+        const errorMessage = document.getElementById('errorMessage');
+        const maxFileSize = 5 * 1024 * 1024; // 5MB
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            errorMessage.textContent = '';
+            
+            if (!file) {
+                fileInfo.textContent = 'Файл не выбран';
+                return;
+            }
+
+            // Check file type
+            if (!allowedTypes.includes(file.type)) {
+                errorMessage.textContent = 'Недопустимый формат файла. Разрешены только: .jpg, .jpeg, .png, .gif';
+                fileInput.value = '';
+                fileInfo.textContent = 'Файл не выбран';
+                return;
+            }
+
+            // Check file size
+            if (file.size > maxFileSize) {
+                errorMessage.textContent = 'Размер файла превышает 5MB';
+                fileInput.value = '';
+                fileInfo.textContent = 'Файл не выбран';
+                return;
+            }
+
+            // If all validations pass
+            fileInfo.textContent = `Выбран файл: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+            
+            // Submit the form
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            fetch('/api/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async response => {
+                console.log('Response status:', response.status);
+                const responseText = await response.text();
+                console.log('Raw response:', responseText);
+                
+                let data;
+                try {
+                    data = responseText ? JSON.parse(responseText) : {};
+                } catch (e) {
+                    console.error('Error parsing JSON:', e);
+                    throw new Error(`Ошибка обработки ответа сервера: ${responseText}`);
+                }
+                
+                if (!response.ok) {
+                    throw new Error(data.message || `Ошибка сервера: ${response.status} ${response.statusText}`);
+                }
+                
+                if (data.success) {
+                    alert(data.message || 'Файл успешно загружен!');
+                    fileInput.value = '';
+                    fileInfo.textContent = 'Файл не выбран';
+                    errorMessage.textContent = '';
+                } else {
+                    throw new Error(data.message || 'Неизвестная ошибка сервера');
+                }
+            })
+            .catch(error => {
+                console.error('Upload error:', error);
+                const errorMsg = error.message || 'Произошла ошибка при загрузке файла';
+                errorMessage.textContent = errorMsg;
+                fileInput.value = '';
+                fileInfo.textContent = 'Файл не выбран';
+            });
+        });
+    </script>
+</body>
+</html>
