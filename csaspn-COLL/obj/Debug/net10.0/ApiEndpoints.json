@@ -20,6 +20,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "csaspn_COLL.Controllers.RandomController",
+    "Method": "GetRandomNumber",
+    "RelativePath": "api/Random",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "UploadController",
     "Method": "Upload",
     "RelativePath": "api/Upload",

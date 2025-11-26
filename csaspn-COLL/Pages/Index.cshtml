@@ -49,9 +49,8 @@
     </div>
     
     <div class="random-getter">
-        <h2>Случайное число на эту страницу: </h2>
-        <div id="rndValue">!</div>
-        
+        <h2>Случайное число: <span id="rndValue">Загрузка...</span></h2>
+        <button type="button" id="refreshRnd">Обновить число</button>
     </div>
 
     <script>        
@@ -129,6 +128,7 @@
             });
         });
 
+
         // Hello button
         document.getElementById('greetingButton').addEventListener('click', async function() {
             try {
@@ -142,6 +142,25 @@
                 console.error('Error:', error);
                 alert('Не удалось получить привет. Вижу ты его не заслужил.');
             }
+        });
+                // Update random number
+        document.getElementById('refreshRnd').addEventListener('click', async function() {
+            try {
+                const response = await fetch('/api/random');
+                if (!response.ok) {
+                    throw new Error('Не удалось получить случайное число');
+                }
+                const data = await response.json();
+                document.getElementById('rndValue').textContent = data.number;
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Не удалось обновить число: ' + error.message);
+            }
+        });
+
+        // Load random number on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('refreshRnd').click();
         });
     </script>
 </body>

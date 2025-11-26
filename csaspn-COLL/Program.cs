@@ -5,8 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 
-// Register greeting service
+// Register services
 builder.Services.AddScoped<IGreetingService, TimeBasedGreetingService>();
+builder.Services.AddTransient<IRandomNumberService, RandomNumberService>();
 
 builder.Services.AddCors(options =>
 {
