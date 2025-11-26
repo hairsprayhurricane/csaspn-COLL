@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace csaspn_COLL.Models.Controllers
+namespace csaspn_COLL.Controllers
 {
     public class Trip
     {

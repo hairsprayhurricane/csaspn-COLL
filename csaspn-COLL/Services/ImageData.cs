@@ -1,4 +1,4 @@
-﻿namespace csaspn_COLL.Models
+﻿namespace csaspn_COLL.Services
 {
     public class ImageData
     {

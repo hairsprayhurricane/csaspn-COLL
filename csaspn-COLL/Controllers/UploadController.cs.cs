@@ -1,6 +1,6 @@
-﻿using csaspn_COLL.Models;
+﻿using csaspn_COLL.Services;
 using Microsoft.AspNetCore.Mvc;
-using csaspn_COLL.Models;
+using csaspn_COLL.Services;
 
 [Route("api/[controller]")]
 [ApiController]

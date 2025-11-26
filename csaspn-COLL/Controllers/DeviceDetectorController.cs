@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 
 
-namespace csaspn_COLL
+namespace csaspn_COLL.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

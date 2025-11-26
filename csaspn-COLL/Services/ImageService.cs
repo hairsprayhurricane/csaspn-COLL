@@ -1,4 +1,4 @@
-﻿using csaspn_COLL.Models;
+﻿using csaspn_COLL.Services;
 using System.Data.SqlClient;
 
 public class ImageService

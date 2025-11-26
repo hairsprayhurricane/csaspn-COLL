@@ -1,7 +1,12 @@
+using csaspn_COLL.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
+
+// Register greeting service
+builder.Services.AddScoped<IGreetingService, TimeBasedGreetingService>();
 
 builder.Services.AddCors(options =>
 {

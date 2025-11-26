@@ -29,11 +29,12 @@
     </div>
 
     <div>
+        <h2>Забронировать путешествие</h2>
         <button type="button" onclick="location.href='/addtrip'">Добавить путешествие</button>
     </div>
 
     <div class="file-upload">
-        <h3>Загрузить изображение</h3>
+        <h2>Загрузить изображение</h2>
         <form id="uploadForm" method="post" enctype="multipart/form-data">
             <input type="file" id="fileInput" name="file" accept=".jpg,.jpeg,.png,.gif" style="display: none;">
             <button type="button" onclick="document.getElementById('fileInput').click()">Выбрать файл</button>
@@ -42,7 +43,19 @@
         </form>
     </div>
 
-    <script>
+    <div class="time-checker">
+        <h2>Получить привет (¯\_(ツ)_/¯)</h2>
+        <button type="button" id="greetingButton">Получить привет</button>
+    </div>
+    
+    <div class="random-getter">
+        <h2>Случайное число на эту страницу: </h2>
+        <div id="rndValue">!</div>
+        
+    </div>
+
+    <script>        
+        // Server Image post
         const fileInput = document.getElementById('fileInput');
         const fileInfo = document.getElementById('fileInfo');
         const errorMessage = document.getElementById('errorMessage');
@@ -58,7 +71,6 @@
                 return;
             }
 
-            // Check file type
             if (!allowedTypes.includes(file.type)) {
                 errorMessage.textContent = 'Недопустимый формат файла. Разрешены только: .jpg, .jpeg, .png, .gif';
                 fileInput.value = '';
@@ -66,7 +78,6 @@
                 return;
             }
 
-            // Check file size
             if (file.size > maxFileSize) {
                 errorMessage.textContent = 'Размер файла превышает 5MB';
                 fileInput.value = '';
@@ -74,10 +85,8 @@
                 return;
             }
 
-            // If all validations pass
             fileInfo.textContent = `Выбран файл: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
             
-            // Submit the form
             const formData = new FormData();
             formData.append('file', file);
             
@@ -118,6 +127,21 @@
                 fileInput.value = '';
                 fileInfo.textContent = 'Файл не выбран';
             });
+        });
+
+        // Hello button
+        document.getElementById('greetingButton').addEventListener('click', async function() {
+            try {
+                const response = await fetch('/api/greeting');
+                if (!response.ok) {
+                    throw new Error('Не удалось получить привет. Вижу ты его не заслужил.');
+                }
+                const data = await response.json();
+                alert(data.greeting);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Не удалось получить привет. Вижу ты его не заслужил.');
+            }
         });
     </script>
 </body>
