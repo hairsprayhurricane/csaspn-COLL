@@ -1,0 +1,43 @@
+﻿@page
+@model csaspn_COLL.Pages.CalorieCalc
+@{
+    ViewData["Title"] = "Calorie Calculator";
+    Layout = null;
+}
+
+<h1>Calorie Calculator</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div style="color: green; margin-bottom: 10px;">@TempData["Message"]</div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div style="color: red; margin-bottom: 10px;">@TempData["Error"]</div>
+}
+
+<form method="post">
+    <div style="margin-bottom: 10px;">
+        <label>Food: <input asp-for="FoodName" style="margin-left: 10px;" /></label>
+    </div>
+    <div style="margin-bottom: 10px;">
+        <label>Calorie (KG): <input asp-for="CalorieAmountPerKg" type="number" style="margin-left: 10px;" /></label>
+    </div>
+    <div style="margin-bottom: 20px;">
+        <label>Gramm: <input asp-for="GrammAmount" type="number" style="margin-left: 20px;" /></label>
+    </div>
+    <button type="submit">Add</button>
+</form>
+
+@if (Model.AddedFoods.Any())
+{
+    <h3>Food list (@Model.AddedFoods.Count):</h3>
+    <ul>
+        @foreach (var food in Model.AddedFoods)
+        {
+            <li>@food.Name: @food.Calories calorie</li>
+        }
+    </ul>
+    <h4 style="color: green;">SUM: @Model.TotalCalories</h4>
+}
