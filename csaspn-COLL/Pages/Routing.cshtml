@@ -1,0 +1,40 @@
+@page "/routingdemo"
+@model csaspn_COLL.Pages.RoutingDemoModel
+@{
+    ViewData["Title"] = "Демонстрация маршрутизации";
+    Layout = null;
+}
+
+<form method="post">
+    <div>
+        <label>Введите URL для анализа:</label>
+        <input name="url" value="@Model.InputUrl" placeholder="/Book/Show/2" />
+    </div>
+
+    <button type="submit">Анализировать</button>
+    <button type="button" onclick="location.href='/'">Назад</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.InputUrl))
+{
+    <div>
+        <h3>Результат анализа маршрута:</h3>
+        <p>Введенный URL: @Model.InputUrl</p>
+        
+        <div>Извлеченные параметры:</div>
+        <div>
+            @if (!string.IsNullOrEmpty(Model.Controller))
+            {
+                <div>Controller: @Model.Controller</div>
+            }
+            @if (!string.IsNullOrEmpty(Model.Action))
+            {
+                <div>Action: @Model.Action</div>
+            }
+            @if (!string.IsNullOrEmpty(Model.Id))
+            {
+                <div>ID: @Model.Id</div>
+            }
+        </div>
+    </div>
+}
