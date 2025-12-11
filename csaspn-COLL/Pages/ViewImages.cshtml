@@ -1,0 +1,75 @@
+@page
+@model csaspn_COLL.Pages.ViewImagesModel
+@{
+    ViewData["Title"] = "Просмотр загруженных изображений";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+            .image-card img {
+                max-width: 100%;
+                height: 200px;
+                object-fit: contain;
+            }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .no-images {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-link">← Назад</a>
+    <h1>Загруженные изображения</h1>
+
+    @if (Model.Images.Any())
+    {
+        <div class="images-grid">
+            @foreach (var image in Model.Images)
+            {
+                <div class="image-card">
+                    <img src="/api/upload/@image.Id" alt="@image.FileName">
+                    <div>@image.FileName</div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="no-images">Нет загруженных изображений</div>
+    }
+</body>
+</html>

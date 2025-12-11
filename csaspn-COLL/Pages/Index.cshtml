@@ -29,18 +29,6 @@
     </div>
 
     <div>
-        <h2>Calorie Calculator</h2>
-        <button type="button" onclick="location.href='/caloriecalc'">Go</button>
-    </div>
-
-
-
-
-
-
-
-
-    <div>
         <h2>Забронировать путешествие</h2>
         <button type="button" onclick="location.href='/addtrip'">Добавить путешествие</button>
     </div>
@@ -53,6 +41,9 @@
             <div id="fileInfo" class="file-info">Файл не выбран</div>
             <div id="errorMessage" class="error-message"></div>
         </form>
+        <button type="button" onclick="location.href='/ViewImages'" class="btn btn-primary">
+            <i class="bi bi-images"></i> Просмотреть изображения
+        </button>
     </div>
 
     <div class="time-checker">
@@ -63,6 +54,11 @@
     <div class="random-getter">
         <h2>Случайное число: <span id="rndValue">Загрузка...</span></h2>
         <button type="button" id="refreshRnd">Обновить число</button>
+    </div>
+
+    <div>
+        <h2>Calorie Calculator</h2>
+        <button type="button" onclick="location.href='/caloriecalc'">Go</button>
     </div>
 
     <script>        
@@ -155,7 +151,6 @@
                 alert('Не удалось получить привет. Вижу ты его не заслужил.');
             }
         });
-                // Update random number
         document.getElementById('refreshRnd').addEventListener('click', async function() {
             try {
                 const response = await fetch('/api/random');
@@ -170,7 +165,6 @@
             }
         });
 
-        // Load random number on page load
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('refreshRnd').click();
         });

@@ -69,5 +69,31 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UploadController",
+    "Method": "GetImage",
+    "RelativePath": "api/Upload/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UploadController",
+    "Method": "GetAllImages",
+    "RelativePath": "api/Upload/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

@@ -37,4 +37,35 @@ public class UploadController : ControllerBase
 
         return Ok(new { success = true, message = "Файл успешно загружен в SQL Server!" });
     }
+
+    [HttpGet("{id}")]
+    public IActionResult GetImage(int id)
+    {
+        var image = _imageService.GetImageById(id);
+        if (image == null)
+            return NotFound();
+
+        var contentType = GetContentType(image.FileName);
+        return File(image.FileContent, contentType);
+    }
+
+    [HttpGet("all")]
+    public IActionResult GetAllImages()
+    {
+        var images = _imageService.GetAllImages();
+        return Ok(images);
+    }
+
+    private string GetContentType(string fileName)
+    {
+        var extension = Path.GetExtension(fileName).ToLowerInvariant();
+        return extension switch
+        {
+            ".jpg" => "image/jpeg",
+            ".jpeg" => "image/jpeg",
+            ".png" => "image/png",
+            ".gif" => "image/gif",
+            _ => "application/octet-stream",
+        };
+    }
 }

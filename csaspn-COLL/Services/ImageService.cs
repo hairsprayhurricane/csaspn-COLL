@@ -1,5 +1,6 @@
 ﻿using csaspn_COLL.Services;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 public class ImageService
 {
@@ -51,5 +52,54 @@ public class ImageService
                 cmd.ExecuteNonQuery();
             }
         }
+    }
+
+    public List<ImageData> GetAllImages()
+    {
+        var images = new List<ImageData>();
+        using (var conn = new SqlConnection(_connectionString))
+        {
+            conn.Open();
+            using (var cmd = new SqlCommand("SELECT Id, FileContent, FileName FROM dbo.ImageContainer ORDER BY Id DESC", conn))
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    images.Add(new ImageData
+                    {
+                        Id = reader.GetInt32(0),
+                        FileContent = (byte[])reader["FileContent"],
+                        FileName = reader["FileName"].ToString()
+                    });
+                }
+            }
+        }
+        return images;
+    }
+
+    public ImageData GetImageById(int id)
+    {
+        using (var conn = new SqlConnection(_connectionString))
+        {
+            conn.Open();
+            using (var cmd = new SqlCommand(
+                "SELECT Id, FileContent, FileName FROM dbo.ImageContainer WHERE Id = @id", conn))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new ImageData
+                        {
+                            Id = reader.GetInt32(0),
+                            FileContent = (byte[])reader["FileContent"],
+                            FileName = reader["FileName"].ToString()
+                        };
+                    }
+                }
+            }
+        }
+        return null;
     }
 }
